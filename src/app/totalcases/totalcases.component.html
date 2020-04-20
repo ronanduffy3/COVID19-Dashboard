@@ -1,0 +1,22 @@
+<div class='container-fluid section'>
+    <h2 style='color: #f0f0f3;' class='d-flex justify-content-center'>Worldwide Cases Over Time</h2>
+    <div class='row'>
+       <div class='col d-flex justify-content-center'>
+          <div class="card cards ">
+             <div class="card-body font-colour ">
+               <div class="chart-wrapper">
+                  <canvas class='chart' baseChart 
+                      [datasets]="lineChartData" 
+                      [labels]="lineChartLabels" 
+                      [colors]="lineChartColors" 
+                      [legend]="lineChartLegend" 
+                      [chartType]="lineChartType" 
+                      [plugins]="lineChartPlugins">
+                  </canvas>
+              </div>
+                <a href="#" class="card-link link">Data Source</a>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
