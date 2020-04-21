@@ -1,7 +1,7 @@
-import { CoronaAPIServiceService } from './../services/CoronaAPI/corona-apiservice.service';
-import { Color, Label, ChartsModule } from 'ng2-charts';
 import { Component, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
+import { CoronaAPIServiceService } from './../services/CoronaAPI/corona-apiservice.service';
 
 @Component({
   selector: 'app-totalcases',
@@ -10,16 +10,17 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 })
 export class TotalcasesComponent implements OnInit {
 
-  
-  
   constructor(private _coronaService: CoronaAPIServiceService) { }
 
+  public latest = [];
+  public dataset1 = [];
+  public dataset2 = [];
 
   public lineChartData: ChartDataSets[] = [
-    { data: [0, 65], label: 'Confirmed Cases' },
-    { data: [0, 50], label: 'Deaths' },
+    { data: this.dataset1, label: 'Confirmed Cases' },
+    { data: this.dataset2, label: 'Deaths' },
   ];
-  public lineChartLabels: Label[] = ['Start', 'Now'];
+  public lineChartLabels: Label[] = ['Cases'];
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
@@ -27,15 +28,24 @@ export class TotalcasesComponent implements OnInit {
     },
   ];
   public lineChartLegend = true;
-  public lineChartType = 'line';
+  public lineChartType = 'bar';
   public lineChartPlugins = [];
 
-  getLatestFigures(){
-    this._coronaService.getLatest()
+  getDataSets() {
+    this._coronaService.getLatestFigures().subscribe((data) => {
+      this.latest = data;
+      this.dataset1.push(this.latest.latest.confirmed);
+      this.dataset2.push(this.latest.latest.deaths);
+      console.log(this.dataset1);
+      console.log(this.dataset2);
+    });
   }
 
-  ngOnInit(){
-    console.log(this.getLatestFigures())
+  ngOnInit() {
+    this.getDataSets();
   }
+
+
+
 
 }
