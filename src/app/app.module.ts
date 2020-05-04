@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { TotalcasesComponent } from './totalcases/totalcases.component';
 import { ChartsModule } from 'ng2-charts';
+import { WorldwidecasesComponent } from './worldwidecases/worldwidecases.component';
 
 
 
@@ -16,7 +17,8 @@ import { ChartsModule } from 'ng2-charts';
     AppComponent,
     NavbarComponent,
     IntroductionComponent,
-    TotalcasesComponent
+    TotalcasesComponent,
+    WorldwidecasesComponent
   ],
   imports: [
     ChartsModule,

@@ -1,0 +1,27 @@
+<div class='container-fluid '>
+    <div class='row'>
+        <div class='col d-flex justify-content-around section'>
+           <div class="card cards ">
+              <div class="card-body font-colour">
+                 <h5 class="card-title ">Find Country</h5>
+                 <form>
+                    <div class="form-group">
+                        <input type='text' name='countryId' class="form-control" #countryId placeholder='Enter countryId' value='1'>
+                    </div>
+                    <button (click)="getCountryDetails(countryId.value)" type="submit" class='btn btn-primary'>Go</button>
+                </form>
+                <div class="chart-wrapper">
+                    <canvas class='chart' baseChart 
+                        [datasets]="lineChartData" 
+                        [labels]="lineChartLabels" 
+                        [colors]="lineChartColors" 
+                        [legend]="lineChartLegend" 
+                        [chartType]="lineChartType" 
+                        [plugins]="lineChartPlugins">
+                    </canvas>
+                </div>
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
